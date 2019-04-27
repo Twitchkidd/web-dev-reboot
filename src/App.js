@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 const Headers = () => (
@@ -12,11 +11,34 @@ const Headers = () => (
 		<h6>This is an h6.</h6>
 	</React.Fragment>
 );
+
 function App() {
+	const [ toggled, setToggled ] = useState(true);
+	const toggle = () => {
+		setToggled(!toggled);
+	};
+	const LinksIFrameDemo = () => (
+		<React.Fragment>
+			<span style={toggled ? {} : { display: 'none' }}>
+				<a style={{ display: 'block' }} href='https://www.garethfield.com' target='eyeFrame'>
+					This is a link to GarethField.com!
+				</a>
+				<br />
+				<a href='https://www.garethfield.com/bounce' target='eyeFrame'>
+					This is a link to GarethField.com/Bounce!
+				</a>
+				<h2>iFrame Magic! (h2)</h2>
+				<iframe height='200px' width='500px' name='eyeFrame' title='Test i-frame' />
+			</span>
+		</React.Fragment>
+	);
 	return (
 		<div className='App'>
 			<Headers />
-			<a href='https://www.garethfield.com/bounce'>This is a link!</a>
+			<button style={{ display: 'block', margin: 'auto', marginBottom: '12px' }} onClick={() => toggle()}>
+				Show/Hide Links, iFrame Demo (button)
+			</button>
+			<LinksIFrameDemo />
 		</div>
 	);
 }
