@@ -11,3 +11,5 @@ Good morning! Felt the need to have some fun and go back through the basics, so 
 Aaaanyway, just read last nights' notes, and yessir! First step that yellow doesn't work on the background color I gave the site, though it's actually quite nice in dark mode.
 
 05-01 Okay, well, that's all the way through the HTML tutorial, except for layouts, canvas, svg, and going through all of the rest of the references. Mmm, CSS might be worth going through. Ahh, JS, too, just for like the string and array methods. I'm going to make a commit, though, I feel like it's a distinct point ... regardless of how dang ugly the code is, haha! Oh, and server sent events, that's news to me, lol.
+
+Oh, and I didn't study any A11Y stuff. For shame.
