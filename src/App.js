@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import logo from './logo.svg';
 import railgunImage from './railgun.jpg';
 import HTMLComment from './components/HTMLComment';
+import img006 from './006.jpg';
 import './App.css';
+import bigscreen from './bigscreen.jpg';
+import tablet from './tablet.png';
+import phone from './phone.jpg';
 
 const Headers = () => (
 	<React.Fragment>
-		<h1>This is an h1.</h1>
-		<h2>This is an h2.</h2>
-		<h3>This is an h3.</h3>
-		<h4 style={{ fontFamily: 'bembo' }}>This is an h4 in bembo.</h4>
-		<h5 style={{ color: '#ff66fa' }}>This is a pink h5.</h5>
-		<h6 style={{ fontSize: '70px', marginBlockStart: '.1em', marginBlockEnd: '.1em' }}>
-			This is an h6 with a font-size of 70px :)
-		</h6>
+		<div style={{ backgroundImage: `url('${img006}')` }}>
+			<h1>This is an h1.</h1>
+			<h2>This is an h2.</h2>
+			<h3 id='headers-3'>This is an h3 with id!</h3>
+			<h4 style={{ fontFamily: 'bembo' }}>This is an h4 in the Bembo font!</h4>
+			<h5 style={{ color: '#ff66fa' }}>This is a pink h5.</h5>
+			<h6 style={{ fontSize: '70px', marginBlockStart: '.1em', marginBlockEnd: '.1em' }}>
+				This is an h6 with a font-size of 70px :)
+			</h6>
+		</div>
 	</React.Fragment>
 );
 
@@ -33,7 +40,7 @@ function App() {
 					This is a link to GarethField.com/Bounce!
 				</a>
 				<h2>iFrame Magic! (h2)</h2>
-				<iframe height='200px' width='500px' name='eyeFrame' title='Test i-frame' />
+				<iframe height='200px' width='500px' name='eyeFrame' title='Test i-frame' style={{ border: 'none' }} />
 			</span>
 		</React.Fragment>
 	);
@@ -47,6 +54,54 @@ function App() {
 				alt='a simple sheild logo from the A Certain Scientific Railgun anime series'
 				style={{ padding: '20px' }}
 			/>
+			<table style={{ width: '100%' }}>
+				<caption>Starbucks Hot Drink Formulas</caption>
+				<tr>
+					<th>Drink</th>
+					<th>Shots (S/T/G/V) [Hot]</th>
+					<th>Pumps (S/T/G/V) [Hot]</th>
+				</tr>
+				<tr>
+					<td>Latte</td>
+					<td>1/1/2/2</td>
+					<td>2/3/4/5</td>
+				</tr>
+				<tr>
+					<td>Cappuccino</td>
+					<td>1/1/2/2</td>
+					<td>1/2/3/4</td>
+				</tr>
+				<tr>
+					<td>Americano</td>
+					<td>1/2/3/4</td>
+					<td>2/3/4/5</td>
+				</tr>
+				<tr>
+					<td>Latte Macchiato</td>
+					<td>2/2/3/3</td>
+					<td>2/3/4/5</td>
+				</tr>
+				<tr>
+					<td>Caramel Macchiato</td>
+					<td>1/1/2/2</td>
+					<td>1/2/3/4</td>
+				</tr>
+			</table>
+			<ul style={{ listStyleType: 'circle', textAlign: 'left' }}>
+				<li>Butter Croissant</li>
+				<li>Chocolate Croissant</li>
+				<li>Almond Croissant</li>
+				<li>Old-fashioned Doughnut</li>
+				<li>Chocolate Brownie</li>
+			</ul>
+			<dl>
+				<dt>Regular</dt>
+				<dd>Normal extraction time: 18-23s</dd>
+				<dt>Ristretto</dt>
+				<dd>Short extraction time: 12-16s</dd>
+				<dt>Long</dt>
+				<dd>Extraction time: 14 years</dd>
+			</dl>
 			<Headers />
 			<p>
 				<small>My life</small>
@@ -61,7 +116,14 @@ function App() {
 				<br />
 				<sub>P.S. This is how to use break tags to start new lines in a p tag!</sub>
 			</p>
-			<pre style={{ border: '4px solid mediumpurple' }}>
+			<pre
+				style={{
+					border: '4px solid mediumpurple',
+					maxWidth: `calc(100vw - 240px)`,
+					marginLeft: '120px',
+					marginVertical: '12px',
+					padding: '12px'
+				}}>
 				{`Here's some preformatted text!
 		Are we tabbed over?
 		Tabs? ...       ... Those a thing?
@@ -85,7 +147,8 @@ function App() {
 			<p>
 				And if we're to cite things like <cite>Fight Club</cite> by Chuck Palahniuk, please use a cite tag
 			</p>
-			<ol>
+			<ol className='classy' type='I'>
+				<HTMLComment text='could not figure out why class was not being applied, className, and then I only applied in light mode lol' />
 				<li>This is a list.</li>
 				<li>A what?</li>
 				<li>A list.</li>
@@ -93,6 +156,11 @@ function App() {
 				<li>A list.</li>
 				<li>Oh, they kissed!</li>
 			</ol>
+			<picture>
+				<source media='(min-width: 960px)' srcset={bigscreen} />
+				<source media='(min-width: 640px)' srcset={tablet} />
+				<img src={phone} alt='electronic device' style={{ width: 'auto', maxWidth: '100%' }} />
+			</picture>
 			<Link to='/dark'>Dark Mode!</Link>
 			<button style={{ display: 'block', margin: 'auto', marginBottom: '12px' }} onClick={() => toggle()}>
 				Show/Hide Links, iFrame Demo (button)
@@ -128,7 +196,7 @@ function AppInDarkMode() {
 					This is a link to GarethField.com/Bounce!
 				</a>
 				<h2>iFrame Magic! (h2)</h2>
-				<iframe height='200px' width='500px' name='eyeFrame' title='Test i-frame' />
+				<iframe height='200px' width='500px' name='eyeFrame' title='Test i-frame' style={{ border: 'none' }} />
 			</span>
 		</React.Fragment>
 	);
@@ -142,6 +210,22 @@ function AppInDarkMode() {
 				alt='a simple sheild logo from the A Certain Scientific Railgun anime series'
 				style={{ padding: '20px' }}
 			/>
+			<a className='buttonlink' href='https://www.google.com/' target='_blank' rel='noopener noreferrer'>
+				Google!
+			</a>
+			<HTMLComment text='image as a link' />
+			<a href='https://en.wikipedia.org/wiki/Sun_bear' target='_blank' rel='noopener noreferrer' title='sun bear wiki!'>
+				<img
+					src={logo}
+					alt='React JS logo'
+					style={{ height: '80px', width: 'auto', border: '1px solid #c4eec4' }}
+					className='linkbutton'
+				/>
+			</a>
+			<a className='buttonlink' href='#contact'>
+				Jump To Contact Info
+			</a>
+			<img src={img006} style={{ width: '100px', height: '100px' }} alt='sunset' />
 			<Headers />
 			<p>
 				<small>My life</small>
@@ -174,7 +258,10 @@ function AppInDarkMode() {
 				blockquote, though, I swear! Oh actually though in the HTML spec it says how it should be used and this is not
 				it.
 			</blockquote>
-			<a href='https://www.w3.org/TR/2011/WD-html5-author-20110705/the-blockquote-element.html' target='_blank'>
+			<a
+				href='https://www.w3.org/TR/2011/WD-html5-author-20110705/the-blockquote-element.html'
+				target='_blank'
+				rel='noopener noreferrer'>
 				The spec for blockquote tag.
 			</a>
 			<p>
@@ -199,7 +286,7 @@ function AppInDarkMode() {
 			<LinksIFrameDemo />
 			<hr />
 			<p>Now for contact information for the owner/author of a document, we have an address tag:</p>
-			<address>
+			<address id='contact'>
 				Web page authored by Gareth Field<br />
 				Please don't mail me at:<br />
 				86 Wooby-Wooby Dr<br />
